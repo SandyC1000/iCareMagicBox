@@ -71,7 +71,7 @@ class Recipient(db.Model):
                     lname = {self.lname}
                     email = {self.email} 
                     phone = {self.phone}
-                    birthday = {self.phone}
+                    birthday = {self.birthday}
                     address = {self.address}
                     user_id = {self.user_id}
                     sentpackage_id = {self.sentpackage_id}>"""

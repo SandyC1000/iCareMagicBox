@@ -28,3 +28,19 @@ for user in user_data:
     db_user = crud.create_user(fname, lname, email, password, phone, birthday, address)    
     users_in_db.append(db_user)
 
+#create recipients
+recipients_in_db=[]
+for recipient in recipient_data:
+    fname, lname, email, phone, birthday, address, user_id, sentpackage_id =(
+        user["fname"],
+        user["lname"],
+        user["email"], 
+        user["phone"],
+        user["birthday"],
+        user["address"],
+        user["user_id"],
+        user["sentpackage_id"])
+
+          
+    db_recipients = crud.create_user(ffname, lname, email, phone, birthday, address, user_id, sentpackage_id)    
+    recipients_in_db.append(db_user)
