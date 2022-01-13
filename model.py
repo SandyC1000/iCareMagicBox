@@ -21,9 +21,9 @@ class User(db.Model):
                     nullable = False, unique = True, )
     password  = db.Column(db.String(10),
                     nullable = False, )
-    phone  = db.Column(db.Integer,
+    phone  = db.Column(db.String,
                     nullable = False, )
-    birthday  = db.Column(db.DateTime,
+    birthday  = db.Column(db.String,
                 nullable = False, )
     address  = db.Column(db.String(200),
                 nullable = False, )            
@@ -51,9 +51,9 @@ class Recipient(db.Model):
                       nullable = False, unique = True, )
     email = db.Column(db.String(30), 
                     nullable = False, unique = True, )
-    phone  = db.Column(db.Integer,
+    phone  = db.Column(db.String,
                     nullable = False, )
-    birthday  = db.Column(db.DateTime,
+    birthday  = db.Column(db.String,
                 nullable = False, )
     address  = db.Column(db.String(200),
                 nullable = False, )   
@@ -76,7 +76,7 @@ class Recipient(db.Model):
                     user_id = {self.user_id}
                     sentpackage_id = {self.sentpackage_id}>"""
 
-class package(db.Model):
+class Package(db.Model):
     """creating types of package table """
     __tablename__ = "packages"
 
@@ -113,7 +113,7 @@ class Sentpackage(db.Model):
 
     user = db.relationship("User", backref="users")
     recipient = db.relationship("Recipient", backref="recipients")
-    package = db.relationship("package", backref="packages")       
+    package = db.relationship("Package", backref="packages")       
 
     def __repr__(self):
         return f"""<Sentpackage sentpackage_id = {self.sentpackage_id} 
@@ -123,7 +123,7 @@ class Sentpackage(db.Model):
                     package_id = {self.package_id} >""" 
   
 
-def connect_to_db(flask_app, db_uri="postgresql:///sentpackages", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///carepackages", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
