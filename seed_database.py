@@ -68,16 +68,19 @@ for n in range (5):
 #     db_recipients = crud.create_user(ffname, lname, email, phone, birthday, address, user_id, sentpackage_id)    
 #     recipients_in_db.append(db_recipients)
 
-# #create packages
+#create packages
+with open("data/packages.json") as f:
+    package_data = json.loads(f.read()) 
+
 # packages_in_db=[]
-# for package in package_data:
-#     package_id, package_type, msg_default, contents = (
-#         user["package_id"],
-#         user["package_type"],
-#         user["msg_default"], 
-#         user["contents"],)
-          
-#     db_packages = crud.create_package(package_id, package_type, msg_default, contents)    
+for package in package_data:
+    package_type, msg_default, contents = (
+        package["package_type"],
+        package["msg_default"], 
+        package["contents"],
+    )
+    crud.create_package(package_type, msg_default, contents)  
+  
 #     recipients_in_db.append(db_packages)
 
 # #create sentpackages

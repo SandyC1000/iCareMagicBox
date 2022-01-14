@@ -15,11 +15,11 @@ def homepage():
     return render_template("homepage.html")
 
 @app.route("/login", methods=["POST"])
-def register_user():
+def login_user():
     """Create a new user."""
     email = request.form.get("email")
     password= request.form.get("password")
-   user = crud.get_user_by_email(email, password)
+    user = crud.get_user_by_email(email, password)
    # query user by email, check if match email in table users and if password match.
     if user:
         flash("Cannot create an account with that email. Try again.")
@@ -47,8 +47,28 @@ def register_user():
     #     flash("Success! User has been created. Please log in.")
     return redirect("/")
 
+@app.route("/packages")
+def list_packages():
+    """Display all care packages"""
+    package_list = crud.get_all_packages()
+    return render_template("all_carepackages.html", package_list=package_list)
+    
+    # package_id = request.form.get("package_id"),
+    # package_type = request.form.get("package_type"),
+    # msg_default = request.form.get("msg_default")
+    # contents= request.form.get("contents")
+          
+#  CRUD will do init
+#  db_packages = crud.create_package(package_id, package_type, msg_default, contents)    
+#     
+    # package = (package_id, package_type, msg_default, contents)
+  
+    # return redirect("/buy_transaction")
 
-
+@app.route("/buy_transaction", methods=["POST"])
+def buy_transaction():
+    print(">>> *** Future Buy Package Transaction ***")
+    return redirect("/")
 
 if __name__ == "__main__":
     connect_to_db(app)

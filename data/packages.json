@@ -1,6 +1,22 @@
-
-
-
-
-
+[
+    {
+        "package_type" : "Energy",
+        "msg_default" : "Bring you strength for your challenges!",
+        "contents" : "chocolate, energy bars"
+    },
+    {
+        "package_type" : "Calm",
+        "msg_default" : "Enter your zen mood :-)",
+        "contents" : "camomile tea, fuzzy socks"
+    },
+    {
+        "package_type" : "Thank You",
+        "msg_default" : "Thanks for thinking of me!!",
+        "contents" : "surprise thank you goodies"
+    },
+    {
+        "package_type" : "Relax",
+        "msg_default" : "Enjoy your free time",
+        "contents" : "popcorn and face mask"
+    }
 ]

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>Top Care Packages</h2>
+
+    <div id="package-list" class="row">
+      {% for package in package_list %}
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 package-summary mt-3">
+
+              <div class="card text-center bg-light">
+                <a href="/package/{{ package.package_id }}">
+                    <img class="card-img-top img-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2M9IpFUkomtBRczNkQrcinmRDIXoCLvI5Qw&usqp=CAU">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/package/{{ package.package_id }}">{{ package.package_type }}</a></h5>
+                    <p>{{ package.package_type}}</p>
+                    <p>{{ package.msg_default}}</p>
+                    <p>{{package.contents}}</p>
+                    <div class="price card-text">$8.00</div>
+                    <a class="btn btn-primary" href="/package/{{ package.package_id }}">Details</a>
+                </div>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+
+{% endblock %}

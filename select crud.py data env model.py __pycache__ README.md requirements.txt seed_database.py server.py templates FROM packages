@@ -1,0 +1,15 @@
+                                           Table "public.packages"
+    Column    |          Type          | Collation | Nullable |                   Default                    
+--------------+------------------------+-----------+----------+----------------------------------------------
+ package_id   | integer                |           | not null | nextval('packages_package_id_seq'::regclass)
+ package_type | character varying(30)  |           | not null | 
+ msg_default  | text                   |           | not null | 
+ contents     | character varying(200) |           | not null | 
+Indexes:
+    "packages_pkey" PRIMARY KEY, btree (package_id)
+    "packages_contents_key" UNIQUE CONSTRAINT, btree (contents)
+    "packages_msg_default_key" UNIQUE CONSTRAINT, btree (msg_default)
+    "packages_package_type_key" UNIQUE CONSTRAINT, btree (package_type)
+Referenced by:
+    TABLE "sentpackages" CONSTRAINT "sentpackages_package_id_fkey" FOREIGN KEY (package_id) REFERENCES packages(package_id)
+
