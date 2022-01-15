@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+{% block title%}{{package.package_type}} - Details{% endblock %}
+
+{% block body%}
+<div style="text-align: center;">
+    <h1>{{package.contents}}</h1>
+ 
+        
+        <div class="card-body">
+            <h5 class="card-title"><a href="/package/{{ package.package_id }}">{{ package.package_type }}</a></h5>
+            <p>{{ package.package_type}}</p>
+            <p>{{ package.msg_default}}</p>
+            <p>{{package.contents}}</p>
+        </div>
+
+    
+
+</div>
+{% endblock%}

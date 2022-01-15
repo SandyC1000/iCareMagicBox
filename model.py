@@ -59,7 +59,7 @@ class Recipient(db.Model):
                 nullable = False, )   
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'),
                          nullable=False)
-    sentpackage_id = db.Column(db.Integer, db.ForeignKey('sentpackages.sentpackage_id'),
+    sentpackage_id = db.Column(db.String, db.ForeignKey('sentpackages.sentpackage_id'),
                          nullable=False)
 
     user = db.relationship("User", backref="recipients")
@@ -108,7 +108,7 @@ class Sentpackage(db.Model):
                         nullable = False,)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'),
                          nullable=False,)
-    package_id = db.Column(db.Integer, db.ForeignKey('packages.package_id'),
+    package_type = db.Column(db.String, db.ForeignKey('packages.package_type'),
                          nullable=False,)
 
     user = db.relationship("User", backref="users")
@@ -116,11 +116,11 @@ class Sentpackage(db.Model):
     package = db.relationship("Package", backref="packages")       
 
     def __repr__(self):
-        return f"""<Sentpackage sentpackage_id = {self.sentpackage_id} 
+        return f"""<Sentpackage sentpackage_id = {self.sentpackage_id}  
                     msg_customized = {self.msg_customized}
                     user_id = {self.user_id}   
                     recipient_id = {self.recipient_id}            
-                    package_id = {self.package_id} >""" 
+                    package_type = {self.package_type}  >""" 
   
 
 def connect_to_db(flask_app, db_uri="postgresql:///carepackages", echo=True):

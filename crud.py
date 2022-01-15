@@ -25,10 +25,27 @@ def create_package(package_type, msg_default, contents) :
     db.session.commit()
     return package
 
+def create_recipient(user_id, sentpackage_type):
+    recipient = Recipient(
+    fname = request.form.get("fname"),
+    lname = request.form.get("lname"),
+    email = request.form.get("email"),
+    phone = request.form.get("phone"),
+    birthday = request.form.get("birthday"),
+    address = request.form.get("address"),
+    user_id= user_id,
+    sentpackage_id = sentpackage_id )
+
+    db.session.add(recipient)
+    db.session.commit()
+    return recipient
+
 def get_all_packages():
     """ return all packages"""
     return Package.query.all()
 
-def get_package_by_id(package_id):
-    """ return package by id """
+def get_package_detail(package_id):
+    """ return package by type """
     return Package.query.get(package_id) 
+
+
