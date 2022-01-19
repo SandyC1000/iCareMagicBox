@@ -17,27 +17,35 @@ def homepage():
 @app.route("/login", methods=["POST"])
 def login_user():
     """Create a new user."""
+
     email = request.form.get("email")
-    password= request.form.get("password")
-    user = crud.get_user_by_email(email, password)
+    password = request.form.get("password")
+    user = crud.get_user_by_email(User,email)
    # query user by email, check if match email in table users and if password match.
     if user:
-        flash("Cannot create an account with that email. Try again.")
+        flash("Welcome back for more kindness.")
+        session['user_id'] = 1 #
     else:
-        crud.create_user(email, password)
-        flash("Success! User has been created. Please log in.")
+        
+        flash("User email not found.")
+    # session['user'] = user 
+    
+   
     return redirect("/")
 
 @app.route("/register", methods=["POST"])
 def register_user():
     """Create a new user."""
-    fname = request.form.get("fname"),
-    lname = request.form.get("lname"),
+    fname = request.form.get("fname")
+    lname = request.form.get("lname")
     email = request.form.get("email")
     password= request.form.get("password")
-    phone = request.form.get("phone"),
-    birthday = request.form.get("birthday"),
+    phone = request.form.get("phone")
+    birthday = request.form.get("birthday")
     address = request.form.get("address")
+
+    print(f"user_name = {fname}")
+    print(f"user_email = {email}") 
 
     user = crud.create_user(fname, lname, email, password, phone, birthday, address)
     return redirect("/")
@@ -46,47 +54,51 @@ def register_user():
 def list_packages():
     """Display all care packages"""
     package_list = crud.get_all_packages()
+
     return render_template("all_carepackages.html", package_list=package_list)
 
-# write a template with a form to gather information about the recipient => recipient.html
-# render that template (with the reciepnt form) on @app.route("/package/<package_id>")
-# give the form action="/recipient" 
-# write/modifiy the route to handle the infomration sent in the html form
-    # print the information from the form so that you can see it in your terminal 
-    # print statments should look like print(f"recipenjt_name = {fname}")
-# at this point, you are just testing out the routes and tempate to see that you can use them
-    # ytou are noit yet adding the recipient to the db
-# small amounts of code at a time == less places for bugs to hide :)
+# 1- write a template with a form to gather information about the recipient => recipient.html
+# 2- render that template (with the reciepnt form) on @app.route("/package/<package_id>")
+# 3 - give the form action="/recipient" 
+# 4 - write/modifiy the route to handle the infomration sent in the html form
+# 5 - print the information from the form so that you can see it in your terminal 
+# 6 - print statements should look like print(f"recipent_name = {fname}")
+# 7 - at this point, you are just testing out the routes and template to see that you can use them
+# 8 - you are not yet adding the recipient to the db
+# 9 - small amounts of code at a time == less places for bugs to hide :)
 
 
-@app.route("/package/<package_id>")      #package_id 
+@app.route("/package/<package_id>")
 def display_packagedetail(package_id):
-
-
     package = crud.get_package_detail(package_id)
+    session['package_id'] = package_id
 #   return f"******{package_id}" #form of recipient
     return render_template("package_detail.html", package_id=package_id, package = package)
   
-@app.route("/recipient")
-def package_recipient(user_id, sentpackage_type):
+@app.route("/recipient", methods=["POST"])
+def package_recipient():
     """Create a new recipient."""
-    fname = request.form.get("fname"),
-    lname = request.form.get("lname"),
+    fname = request.form.get("fname")
+    lname = request.form.get("lname")
     email = request.form.get("email")
-    phone = request.form.get("phone"),
-    birthday = request.form.get("birthday"),
+    phone = request.form.get("phone")
+    birthday = request.form.get("birthday")
     address = request.form.get("address")
-    user_id= request.args.get(user_id)
-    sentpackage_id = request.args.get(sentpackage_id)
-
+    user_id = session['user_id']
+    sentpackage_id = session['package_id']
+   
+    # print the recipients HERE!!
+    print("==>>RECIPIENT confirm:\n",fname, lname, email, phone, birthday, address,user_id, sentpackage_id)
+    print(f"type of fname == {type(fname)}")
+    print(f"type of email == {type(email)}")
 
     recipient = crud.create_recipient(fname, lname, email, phone, birthday, address, user_id, sentpackage_id)
 
-    return redirect("/buy_transaction", recipient)
+    return redirect("/checkout", recipient)
 
-@app.route("/buy_transaction", methods=["POST"])
-def buy_transaction(recipient):
-    print(">>> *** Future Buy Package Transaction ***")
+@app.route("/checkout")
+def checkout(recipient):
+    print(">>> *** Future Checkout Package Transaction ***  {recipient}")
     return redirect("/")
 
 if __name__ == "__main__":

@@ -48,7 +48,7 @@ class Recipient(db.Model):
     fname = db.Column(db.String(30),
                       nullable = False, unique = True, ) 
     lname = db.Column(db.String(30),
-                      nullable = False, unique = True, )
+                      nullable = False, unique = False, )
     email = db.Column(db.String(30), 
                     nullable = False, unique = True, )
     phone  = db.Column(db.String,
@@ -59,7 +59,7 @@ class Recipient(db.Model):
                 nullable = False, )   
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'),
                          nullable=False)
-    sentpackage_id = db.Column(db.String, db.ForeignKey('sentpackages.sentpackage_id'),
+    sentpackage_id = db.Column(db.Integer, db.ForeignKey('sentpackages.sentpackage_id'),
                          nullable=False)
 
     user = db.relationship("User", backref="recipients")
@@ -108,7 +108,7 @@ class Sentpackage(db.Model):
                         nullable = False,)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'),
                          nullable=False,)
-    package_type = db.Column(db.String, db.ForeignKey('packages.package_type'),
+    package_id = db.Column(db.Integer, db.ForeignKey('packages.package_id'),
                          nullable=False,)
 
     user = db.relationship("User", backref="users")

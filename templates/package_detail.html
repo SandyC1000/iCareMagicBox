@@ -14,6 +14,30 @@
             <p>{{package.contents}}</p>
         </div>
 
+        <h2>Sending a Care Package</h2>
+        <form action="/recipient" method="POST">
+            <p>
+                FirstName <input type="text" name="fname">
+            </p>
+            <p>
+                LastName <input type="text" name="lname">
+            </p>
+            <p>
+                Email <input type="text" name="email">
+            </p>
+            <p>
+                Phone <input type="text" name="phone">
+            </p>
+            <p>
+                Birthday <input type="text" name="birthday">
+            </p>
+            <p>
+                Address <input type="text" name="address">
+            </p>
+          <p>
+            <input type="submit">
+          </p>
+        </form>
     
 
 </div>
