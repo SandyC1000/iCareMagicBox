@@ -54,18 +54,17 @@ for n in range (5):
 
 # recipients_in_db=[]
 # for recipient in recipient_data:
-#     fname, lname, email, phone, birthday, address, user_id, sentpackage_id =(
+#     fname, lname, email, phone, birthday, address, user_id =(
 #         user["fname"],
 #         user["lname"],
 #         user["email"], 
 #         user["phone"],
 #         user["birthday"],
 #         user["address"],
-#         user["user_id"],
-#         user["sentpackage_id"])
+#         user["user_id"])
 
           
-#     db_recipients = crud.create_user(ffname, lname, email, phone, birthday, address, user_id, sentpackage_id)    
+#     db_recipients = crud.create_user(ffname, lname, email, phone, birthday, address, user_id)    
 #     recipients_in_db.append(db_recipients)
 
 #create packages

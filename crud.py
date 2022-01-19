@@ -20,15 +20,9 @@ def create_user(fname, lname, email, password, phone, birthday, address) :
 # run crud interactivetly to check on user
 #return user object
 # File "/home/hackbright/src/Hackbright/PROJECT/iCareMagicBox/server.py", line 87, in package_recipient
-def get_user_by_email(User,email):
-    """ return user info ny email """
-    user_id = ""
-    User.query.all()
-    if User.query.filter(User.email == email).first():
-        user_id = User.query.get(User.user_id)
-    else:
-        return print("email {email} not found, please register !")
-    return print(f" User_id  {user_id}  email {email}")
+def get_user_by_email(email):
+    """ return user info ny email """ 
+    return User.query.filter(User.email == email).first()
 
 def create_package(package_type, msg_default, contents):
     package = Package(
@@ -40,16 +34,15 @@ def create_package(package_type, msg_default, contents):
     db.session.commit()
     return package
 
-def create_recipient():
+def create_recipient(fname, lname, email, phone, birthday, address, user_id):
     recipient = Recipient(
-    fname = request.form.get("fname"),
-    lname = request.form.get("lname"),
-    email = request.form.get("email"),
-    phone = request.form.get("phone"),
-    birthday = request.form.get("birthday"),
-    address = request.form.get("address"),
-    user_id = session["User.user_id"],
-    sentpackage_id = sentpackage_id )
+            fname = fname,
+            lname = lname,
+            email = email,
+            phone = phone,
+            birthday = birthday,
+            address = address,
+            user_id = user_id )
 
     db.session.add(recipient)
     db.session.commit()

@@ -17,20 +17,17 @@ def homepage():
 @app.route("/login", methods=["POST"])
 def login_user():
     """Create a new user."""
-
     email = request.form.get("email")
     password = request.form.get("password")
-    user = crud.get_user_by_email(User,email)
+    user = crud.get_user_by_email(email)  #user Object aattribute
    # query user by email, check if match email in table users and if password match.
     if user:
         flash("Welcome back for more kindness.")
-        session['user_id'] = 1 #
+        session['User.user_id'] = 1 #  testing
+        #session['User.user_id'] = user.user_id  # variable user(crud line 22 )
     else:
-        
         flash("User email not found.")
     # session['user'] = user 
-    
-   
     return redirect("/")
 
 @app.route("/register", methods=["POST"])
@@ -48,6 +45,7 @@ def register_user():
     print(f"user_email = {email}") 
 
     user = crud.create_user(fname, lname, email, password, phone, birthday, address)
+    flash("*** Successfully created new User!!")
     return redirect("/")
 
 @app.route("/packages")
@@ -78,13 +76,17 @@ def display_packagedetail(package_id):
 @app.route("/recipient", methods=["POST"])
 def package_recipient():
     """Create a new recipient."""
+    print('************')
+    print('SESSION ------>', session)
+    print('************')
+    
     fname = request.form.get("fname")
     lname = request.form.get("lname")
     email = request.form.get("email")
     phone = request.form.get("phone")
     birthday = request.form.get("birthday")
     address = request.form.get("address")
-    user_id = session['user_id']
+    user_id = session['User.user_id']
     sentpackage_id = session['package_id']
    
     # print the recipients HERE!!
@@ -92,7 +94,7 @@ def package_recipient():
     print(f"type of fname == {type(fname)}")
     print(f"type of email == {type(email)}")
 
-    recipient = crud.create_recipient(fname, lname, email, phone, birthday, address, user_id, sentpackage_id)
+    recipient = crud.create_recipient(fname, lname, email, phone, birthday, address, user_id)
 
     return redirect("/checkout", recipient)
 

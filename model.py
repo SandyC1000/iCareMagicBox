@@ -59,8 +59,7 @@ class Recipient(db.Model):
                 nullable = False, )   
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'),
                          nullable=False)
-    sentpackage_id = db.Column(db.Integer, db.ForeignKey('sentpackages.sentpackage_id'),
-                         nullable=False)
+
 
     user = db.relationship("User", backref="recipients")
     sentpackage = db.relationship("Sentpackage", backref="sentpackages")
@@ -74,7 +73,7 @@ class Recipient(db.Model):
                     birthday = {self.birthday}
                     address = {self.address}
                     user_id = {self.user_id}
-                    sentpackage_id = {self.sentpackage_id}>"""
+                    >"""
 
 class Package(db.Model):
     """creating types of package table """
@@ -110,6 +109,8 @@ class Sentpackage(db.Model):
                          nullable=False,)
     package_id = db.Column(db.Integer, db.ForeignKey('packages.package_id'),
                          nullable=False,)
+    recipient_id = db.Column(db.Integer, db.ForeignKey('recipients.recipient_id'),
+                         nullable=False,)                     
 
     user = db.relationship("User", backref="users")
     recipient = db.relationship("Recipient", backref="recipients")
@@ -120,7 +121,7 @@ class Sentpackage(db.Model):
                     msg_customized = {self.msg_customized}
                     user_id = {self.user_id}   
                     recipient_id = {self.recipient_id}            
-                    package_type = {self.package_type}  >""" 
+                    package_id = {self.package_id}  >""" 
   
 
 def connect_to_db(flask_app, db_uri="postgresql:///carepackages", echo=True):
