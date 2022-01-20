@@ -9,9 +9,11 @@
         
         <div class="card-body">
             <h5 class="card-title"><a href="/package/{{ package.package_id }}">{{ package.package_type }}</a></h5>
+            <img class="card-img-top img-circle" src="../static/{{package.package_id}}_box.jpg"> 
             <p>{{ package.package_type}}</p>
             <p>{{ package.msg_default}}</p>
             <p>{{package.contents}}</p>
+            <p>{{package.price}}</p>
         </div>
 
         <h2>Sending a Care Package</h2>
@@ -34,9 +36,15 @@
             <p>
                 Address <input type="text" name="address">
             </p>
-          <p>
-            <input type="submit">
-          </p>
+            <!-- # create package_id to be included in form using Jinja
+            # set value package = package.package_id -->
+            <p>
+                Package  {{package.package_id}}     <!--Jinja -->
+                msg_customized {{package.msg_default}}
+            </p>
+            <p>
+            Send a Gift Now:  <input type="submit">
+            </p>
         </form>
     
 

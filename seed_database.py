@@ -73,12 +73,13 @@ with open("data/packages.json") as f:
 
 # packages_in_db=[]
 for package in package_data:
-    package_type, msg_default, contents = (
+    package_type, msg_default, contents, price = (
         package["package_type"],
         package["msg_default"], 
         package["contents"],
+        package["price"]
     )
-    crud.create_package(package_type, msg_default, contents)  
+    crud.create_package(package_type, msg_default, contents, price)  
   
 #     recipients_in_db.append(db_packages)
 

@@ -95,12 +95,24 @@ def package_recipient():
     print(f"type of email == {type(email)}")
 
     recipient = crud.create_recipient(fname, lname, email, phone, birthday, address, user_id)
+    
+    return redirect(f"/checkout/{recipient.recipient_id}")
 
-    return redirect("/checkout", recipient)
-
-@app.route("/checkout")
+@app.route('/checkout/<int:recipient>')
 def checkout(recipient):
-    print(">>> *** Future Checkout Package Transaction ***  {recipient}")
+    msg_customized = "blabla"
+    user_id = session['User.user_id']
+    user = crud.get_user_by_id(user_id)
+    package_id = session['package_id']
+    package = crud.get_package_detail(package_id)
+    print(f"==>>> ROUTE Checkout: {package.msg_default} {package.msg_default}")
+    recipient_id = recipient
+    n_recipient = crud.get_recipient(recipient_id)
+    msg_customized = f' Dear {n_recipient.fname}, {package.msg_default} {user.fname}'
+    print(f">>> === recipient Sent Package Transaction ===  {recipient_id}")
+    sentpackage = crud.create_sentpackage(msg_customized, user_id, package_id, recipient_id)
+    print(f">>> *** Created Sent Package Transaction ***  {sentpackage}")
+    flash(msg_customized)
     return redirect("/")
 
 if __name__ == "__main__":

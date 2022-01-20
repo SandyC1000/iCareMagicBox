@@ -24,11 +24,17 @@ def get_user_by_email(email):
     """ return user info ny email """ 
     return User.query.filter(User.email == email).first()
 
-def create_package(package_type, msg_default, contents):
+def get_user_by_id(user_id):
+    """ return user info by user_id """ 
+    return User.query.filter(User.user_id == user_id).first()
+
+
+def create_package(package_type, msg_default, contents, price):
     package = Package(
             package_type = package_type,
             msg_default = msg_default,
-            contents = contents)
+            contents = contents,
+            price = price )
     
     db.session.add(package)
     db.session.commit()
@@ -48,6 +54,10 @@ def create_recipient(fname, lname, email, phone, birthday, address, user_id):
     db.session.commit()
     return recipient
 
+def get_recipient(recipient_id):
+    """ return recipient info by recipient_id """ 
+    return Recipient.query.filter(Recipient.recipient_id == recipient_id).first()    
+
 def get_all_packages():
     """ return all packages"""
     return Package.query.all()
@@ -56,4 +66,16 @@ def get_package_detail(package_id):
     """ return package by type """
     return Package.query.get(package_id) 
 
-
+def create_sentpackage(msg_customized, user_id, package_id, recipient_id):
+    """ return package by type """
+    sentpackage = Sentpackage(
+            msg_customized = msg_customized,
+            user_id = user_id,
+            package_id = package_id,
+            recipient_id = recipient_id
+            )
+    print(f"=>=> Sentpackage details: {sentpackage}")
+    db.session.add(sentpackage)
+    db.session.commit()
+    return sentpackage
+   

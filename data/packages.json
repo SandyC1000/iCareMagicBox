@@ -2,21 +2,25 @@
     {
         "package_type" : "Energy",
         "msg_default" : "Bring you strength for your challenges!",
-        "contents" : "chocolate, energy bars"
+        "contents" : "chocolate, energy bars",
+        "price" : 10.00
     },
     {
         "package_type" : "Calm",
         "msg_default" : "Enter your zen mood :-)",
-        "contents" : "camomile tea, fuzzy socks"
+        "contents" : "camomile tea, fuzzy socks",
+        "price" : 9.00
     },
     {
         "package_type" : "Thank You",
         "msg_default" : "Thanks for thinking of me!!",
-        "contents" : "surprise thank you goodies"
+        "contents" : "surprise thank you goodies",
+        "price" : 8.00
     },
     {
         "package_type" : "Relax",
         "msg_default" : "Enjoy your free time",
-        "contents" : "popcorn and face mask"
+        "contents" : "popcorn and face mask",
+        "price" : 12.00
     }
 ]

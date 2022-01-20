@@ -14,11 +14,11 @@ class User(db.Model):
                         autoincrement = True,
                         primary_key = True, )
     fname = db.Column(db.String(30),
-                      nullable = False, unique = True, ) 
+                      nullable = False,  ) 
     lname = db.Column(db.String(30),
-                      nullable = False, unique = True, )
+                      nullable = False,  )
     email = db.Column(db.String(30), 
-                    nullable = False, unique = True, )
+                    nullable = False,  )
     password  = db.Column(db.String(10),
                     nullable = False, )
     phone  = db.Column(db.String,
@@ -46,11 +46,11 @@ class Recipient(db.Model):
                         autoincrement = True,
                         primary_key = True, )
     fname = db.Column(db.String(30),
-                      nullable = False, unique = True, ) 
+                      nullable = False,)
     lname = db.Column(db.String(30),
-                      nullable = False, unique = False, )
+                      nullable = False,)
     email = db.Column(db.String(30), 
-                    nullable = False, unique = True, )
+                    nullable = False,)
     phone  = db.Column(db.String,
                     nullable = False, )
     birthday  = db.Column(db.String,
@@ -85,10 +85,11 @@ class Package(db.Model):
     package_type = db.Column(db.String(30),
                     nullable = False, unique = True, ) 
     msg_default = db.Column(db.Text,
-                    nullable = False, unique = True, )
+                    nullable = False, )
     contents = db.Column(db.String(200), 
-                    nullable = False, unique = True, )
-          
+                    nullable = False, )
+    price = db.Column(db.Integer, 
+                    nullable = False, )
 
     def __repr__(self):
         return f"""<Package package_id = {self.package_id} 
