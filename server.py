@@ -104,7 +104,8 @@ def checkout(recipient):
     user_id = session['User.user_id']
     user = crud.get_user_by_id(user_id)
     package_id = session['package_id']
-    package = crud.get_package_detail(package_id)
+    package = crud.get_package_detail(package_id) 
+    # add session date time - record for shipping 
     print(f"==>>> ROUTE Checkout: {package.msg_default} {package.msg_default}")
     recipient_id = recipient
     n_recipient = crud.get_recipient(recipient_id)
