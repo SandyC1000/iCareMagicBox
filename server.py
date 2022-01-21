@@ -22,9 +22,9 @@ def login_user():
     user = crud.get_user_by_email(email)  #user Object aattribute
    # query user by email, check if match email in table users and if password match.
     if user:
-        flash("Welcome back for more kindness.")
-        session['User.user_id'] = 1 #  testing
-        #session['User.user_id'] = user.user_id  # variable user(crud line 22 )
+        flash(f"*** Hello {user.fname}!  Welcome back for more kindness.")
+        #session['User.user_id'] = 1 #  testing
+        session['User.user_id'] = user.user_id  # variable user(crud line 22 )
     else:
         flash("User email not found.")
     # session['user'] = user 
@@ -47,6 +47,18 @@ def register_user():
     user = crud.create_user(fname, lname, email, password, phone, birthday, address)
     flash("*** Successfully created new User!!")
     return redirect("/")
+
+@app.route("/users")
+def list_users():
+    """Display all users/customers"""
+    user_list = crud.get_all_users()
+    return render_template("all_users.html", user_list=user_list)    
+
+@app.route("/recipients")
+def list_recipients():
+    """Display all recipients"""
+    recipient_list = crud.get_all_recipients()
+    return render_template("all_recipients.html", recipient_list=recipient_list)        
 
 @app.route("/packages")
 def list_packages():
@@ -109,7 +121,7 @@ def checkout(recipient):
     print(f"==>>> ROUTE Checkout: {package.msg_default} {package.msg_default}")
     recipient_id = recipient
     n_recipient = crud.get_recipient(recipient_id)
-    msg_customized = f' Dear {n_recipient.fname}, {package.msg_default} {user.fname}'
+    msg_customized = f'==>> *****  Dear {n_recipient.fname}, {package.msg_default} !! \n Best regards,  {user.fname}'
     print(f">>> === recipient Sent Package Transaction ===  {recipient_id}")
     sentpackage = crud.create_sentpackage(msg_customized, user_id, package_id, recipient_id)
     print(f">>> *** Created Sent Package Transaction ***  {sentpackage}")

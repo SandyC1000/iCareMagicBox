@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>= = = Happy iCareMagicBox Recipients!!  = = =</h2>
+
+    <div id="recipient-list" class="row">
+      {% for recipient in recipient_list %}
+
+
+            <div class="card-body">
+                <h5 class="card-title"><a href="/recipients">{{ recipient.fname }} {{ recipient.lname}}</a></h5>
+
+            </div>
+         
+      {% endfor %}
+    </div>
+
+{% endblock %}

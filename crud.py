@@ -28,6 +28,10 @@ def get_user_by_id(user_id):
     """ return user info by user_id """ 
     return User.query.filter(User.user_id == user_id).first()
 
+def get_all_users():
+    """ return all users"""
+    return User.query.all()
+
 
 def create_package(package_type, msg_default, contents, price):
     package = Package(
@@ -57,6 +61,10 @@ def create_recipient(fname, lname, email, phone, birthday, address, user_id):
 def get_recipient(recipient_id):
     """ return recipient info by recipient_id """ 
     return Recipient.query.filter(Recipient.recipient_id == recipient_id).first()    
+
+def get_all_recipients():
+    """ return all recipients"""
+    return Recipient.query.all()    
 
 def get_all_packages():
     """ return all packages"""
