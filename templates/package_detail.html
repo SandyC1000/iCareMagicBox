@@ -14,7 +14,7 @@
             <p>{{ package.msg_default}}</p>
             <p>{{package.contents}}</p>
             <!-- <p>{{package.price}}</p> -->
-            <div class="price card-text"><p>$ {{package.price}}</p></div>
+            <div class="price card-text"><p>$ {{package.price}}.00</p></div>
         </div>
 
         <h2>Sending a Care Package</h2>
@@ -39,12 +39,18 @@
             </p>
             <!-- # create package_id to be included in form using Jinja
             # set value package = package.package_id -->
-            <p>
+            <!-- <p>
                 Package  {{package.package_id}}     <!--Jinja -->
-                msg_customized {{package.msg_default}}
+                <!-- sent_price {{package.price}}
+                msg_customized {{package.msg_default}} -->
+            </p> -->
+            <p>
+                Customize your message:<textarea id="msg_customized" name="msg_customized" spellcheck="true"
+                rows="5" cols="30"
+                minlength="10" maxlength="200">{{package.msg_default}}</textarea>
             </p>
             <p>
-            Send a Gift Now:  <input type="submit">
+            Send a Gift Now:  <input type="submit" value="Send your Gift">
             </p>
         </form>
     

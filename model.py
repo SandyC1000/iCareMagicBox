@@ -106,6 +106,8 @@ class Sentpackage(db.Model):
                         primary_key = True, )
     msg_customized = db.Column(db.Text,
                         nullable = False,)
+    # sent_price = db.Column(db.Integer,
+    #                     nullable = False,)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'),
                          nullable=False,)
     package_id = db.Column(db.Integer, db.ForeignKey('packages.package_id'),

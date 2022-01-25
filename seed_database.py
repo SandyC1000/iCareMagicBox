@@ -89,9 +89,10 @@ for package in package_data:
 #     sentpackage_id, msg_customized, user_id, recipient_id, package_id  = (
 #         sentpackage["sentpackage_id"],
 #         sentpackage["msg_customized"],
+#         sentpackage["sent_price"],
 #         sentpackage["user_id"], 
 #         sentpackage["recipient_id"], 
 #         sentpackage["package_id"],)
           
-#     db_sentpackages = crud.create_sentpackage(sentpackage_id, msg_customized, user_id, recipient_id, package_id)    
+#     db_sentpackages = crud.create_sentpackage(sentpackage_id, msg_customized, sent_price, user_id, recipient_id, package_id)    
 #     recipients_in_db.append(db_sentpackages)  

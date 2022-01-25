@@ -100,31 +100,39 @@ def package_recipient():
     address = request.form.get("address")
     user_id = session['User.user_id']
     sentpackage_id = session['package_id']
-   
+    session['n_msg_customized'] = request.form.get("msg_customized")
+    # print(f'////>>>/recipient : text box {msg_customized}')
     # print the recipients HERE!!
     print("==>>RECIPIENT confirm:\n",fname, lname, email, phone, birthday, address,user_id, sentpackage_id)
     print(f"type of fname == {type(fname)}")
     print(f"type of email == {type(email)}")
 
     recipient = crud.create_recipient(fname, lname, email, phone, birthday, address, user_id)
-    
+   
     return redirect(f"/checkout/{recipient.recipient_id}")
 
 @app.route('/checkout/<int:recipient>')
 def checkout(recipient):
-    msg_customized = "blabla"
+
     user_id = session['User.user_id']
     user = crud.get_user_by_id(user_id)
+    
     package_id = session['package_id']
     package = crud.get_package_detail(package_id) 
+
+    msg_customized = session['n_msg_customized']
+    # msg_customized = package.msg_default
+    # msg_customized = request.form.get("msg_customized")
+    print(f'/checkoput = = =>>> text box {msg_customized}')
+    # sent_price = package.price
     # add session date time - record for shipping 
-    print(f"==>>> ROUTE Checkout: {package.msg_default} {package.msg_default}")
+    print(f"==>>> ROUTE Checkout: {package.msg_default} ")
     recipient_id = recipient
     n_recipient = crud.get_recipient(recipient_id)
-    msg_customized = f'==>> *****  Dear {n_recipient.fname}, {package.msg_default} !! \n Best regards,  {user.fname}'
     print(f">>> === recipient Sent Package Transaction ===  {recipient_id}")
     sentpackage = crud.create_sentpackage(msg_customized, user_id, package_id, recipient_id)
     print(f">>> *** Created Sent Package Transaction ***  {sentpackage}")
+    msg_customized = f'==>> *****  Dear {n_recipient.fname}, {msg_customized} !! \n Best regards,  {user.fname}'
     flash(msg_customized)
     return redirect("/")
 

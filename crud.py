@@ -85,7 +85,7 @@ def create_sentpackage(msg_customized, user_id, package_id, recipient_id):
             recipient_id = recipient_id
             )
     print(f"=>=> Sentpackage details: {sentpackage}")
-    print(f"oreder date   Shipping date")
+    print(f"order date   Shipping date")
     db.session.add(sentpackage)
     db.session.commit()
     return sentpackage
