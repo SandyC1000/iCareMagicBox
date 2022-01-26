@@ -21,7 +21,7 @@ class User(db.Model):
                     nullable = False,  )
     password  = db.Column(db.String(10),
                     nullable = False, )
-    phone  = db.Column(db.String,
+    phone  = db.Column(db.Integer,
                     nullable = False, )
     birthday  = db.Column(db.String,
                 nullable = False, )
@@ -51,7 +51,7 @@ class Recipient(db.Model):
                       nullable = False,)
     email = db.Column(db.String(30), 
                     nullable = False,)
-    phone  = db.Column(db.String,
+    phone  = db.Column(db.Integer,
                     nullable = False, )
     birthday  = db.Column(db.String,
                 nullable = False, )

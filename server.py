@@ -1,6 +1,20 @@
 """ Serve.py for iCareMagicBox"""
 from flask import (Flask, render_template, request, flash, session,
                     redirect)
+from twilio.twiml.messaging_response import MessagingResponse
+from twilio.rest import Client
+import os
+TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
+TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
+
+client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+
+message = client.messages.create(
+    to="+15105025180",
+    from_="+16502279500",
+    body="*** Hello from iCareMagicBox!! ***")
+
+print(message.sid)    
 from model import connect_to_db
 import crud
 from jinja2 import StrictUndefined
@@ -134,7 +148,31 @@ def checkout(recipient):
     print(f">>> *** Created Sent Package Transaction ***  {sentpackage}")
     msg_customized = f'==>> *****  Dear {n_recipient.fname}, {msg_customized} !! \n Best regards,  {user.fname}'
     flash(msg_customized)
+    # *** Twilio SMS ***
+    message = client.messages.create(
+    to="+1"+str(n_recipient.phone),
+    from_="+16502279500",  # Twilio phone
+    body="*** Hello from iCareMagicBox!! ***"+msg_customized)
+
     return redirect("/")
+
+@app.route("/sms", methods=['GET', 'POST'])
+def incoming_sms():
+    """Send a dynamic reply to an incoming text message"""
+    # Get the message the user sent our Twilio number
+    body = request.values.get('Body', None)
+    print(f'+++++>>>> body texted back: {body}')
+    # Start our TwiML response
+    resp = MessagingResponse()
+
+    # Determine the right reply for this message
+    if body == 'Y':
+        resp.message("Great! we will send a Thank You Box for you!")
+
+    elif body == 'N':
+        resp.message("Enjoy your iCareMagicBox")
+
+    return str(resp)
 
 if __name__ == "__main__":
     connect_to_db(app)
