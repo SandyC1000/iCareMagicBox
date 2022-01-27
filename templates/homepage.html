@@ -13,48 +13,54 @@
     <li><a href="/recipients">View all recipients</a></li>
 </ul>
 
+
 <h2>Login</h2>
+<div id="user-login" >
 <form action="/login" method="POST">
   <p>
-    Email <input type="text" name="email">
+    Email <input id="login-email" type="text" name="email">
   </p>
 
   <p>
-    Password <input type="password" name="password">
+    Password <input id="login-password" type="password" name="password">
   </p>
 
   <p>
     <input type="submit">
   </p>
 </form>
+<button id="show-user-form" >New user registration</button>
+</div>
 
-<h2>Create an Account/Register</h2>
-<form action="/register" method="POST">
+<div id="create-user" >
+  <h2>Create a User/Register</h2>
+  <form id="user-reg-form" action="/register" method="POST">
+      <p>
+          FirstName <input id="reg-fname" type="text" name="fname">
+      </p>
+      <p>
+          LastName <input id="reg-lname" type="text" name="lname">
+      </p>
+      <p>
+          Email <input id="reg-email" type="text" name="email">
+      </p>
+      <p>
+          Password <input id="reg-password" type="password" name="password">
+      </p>
+      <p>
+          Phone <input id="reg-phone" type="text" name="phone">
+      </p>
+      <p>
+          Birthday <input id="reg-birthday" type="text" name="birthday">
+      </p>
+      <p>
+          Address <input id="reg-address" type="text" name="address">
+      </p>
     <p>
-        FirstName <input type="text" name="fname">
+      <input type="submit">
     </p>
-    <p>
-        LastName <input type="text" name="lname">
-    </p>
-    <p>
-        Email <input type="text" name="email">
-    </p>
-    <p>
-        Password <input type="password" name="password">
-    </p>
-    <p>
-        Phone <input type="text" name="phone">
-    </p>
-    <p>
-        Birthday <input type="text" name="birthday">
-    </p>
-    <p>
-        Address <input type="text" name="address">
-    </p>
-  <p>
-    <input type="submit">
-  </p>
 </form>
+</div>
 
 {% endblock %}
 
