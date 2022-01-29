@@ -9,14 +9,14 @@
 
               <div class="card text-center bg-light">
                 <a href="/package/{{ package.package_id }}"> 
-                    <img class="card-img-top img-circle" src="../static/img/box_{{package.package_id}}.jpg">  
+                    <img class="card-img-top img-circle"
+                    style="width: 250px; height: 250px;" 
+                    src="../static/img/box_{{package.package_id}}.jpg">  
                 </a>
                 <div class="card-body">
-                    <h5 class="card-title"><a href="/package/{{ package.package_id }}">{{ package.package_type }}</a></h5>
-                    <!-- <p>{{ package.package_type}}</p>
-                    <p>{{ package.msg_default}}</p>
-                    <p>{{package.contents}}</p>
-                    <div class="price card-text"><p>$ {{package.price}}</p></div> -->
+                    <h5 class="card-title">
+                    <a href="/package/{{ package.package_id }}">
+                        {{ package.package_type }}</a></h5>
                     <a class="btn btn-primary" href="/package/{{ package.package_id }}">Details</a>
                 </div>
               </div>

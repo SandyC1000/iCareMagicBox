@@ -166,23 +166,24 @@ def checkout(recipient):
 
     return redirect("/")
 
-@app.route("/sms", methods=['GET', 'POST'])
-def incoming_sms():
-    """Send a dynamic reply to an incoming text message"""
-    # Get the message the user sent our Twilio number
-    body = request.values.get('Body', None)
-    print(f'+++++>>>> body texted back: {body}')
-    # Start our TwiML response
-    resp = MessagingResponse()
+# 1 - needs to activate ngrok for Twilio to send response via mobile chat - tested ok
+# @app.route("/sms", methods=['GET', 'POST'])
+# def incoming_sms():
+#     """Send a dynamic reply to an incoming text message"""
+#     # Get the message the user sent our Twilio number
+#     body = request.values.get('Body', None)
+#     print(f'+++++>>>> body texted back: {body}')
+#     # Start our TwiML response
+#     resp = MessagingResponse()
 
-    # Determine the right reply for this message
-    if body == 'Y':
-        resp.message("Great! we will send a Thank You Box for you!")
+#     # Determine the right reply for this message
+#     if body == 'Y':
+#         resp.message("Great! we will send a Thank You Box for you!")
 
-    elif body == 'N':
-        resp.message("Enjoy your iCareMagicBox")
+#     elif body == 'N':
+#         resp.message("Enjoy your iCareMagicBox")
 
-    return str(resp)
+#     return str(resp)
 
 if __name__ == "__main__":
     connect_to_db(app)
