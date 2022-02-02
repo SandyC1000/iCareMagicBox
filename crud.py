@@ -70,6 +70,15 @@ def get_all_packages():
     """ return all packages"""
     return Package.query.all()
 
+def get_packages_dicts():
+    """ return all(4) packages in dicts for JSON """
+    all_packages = get_all_packages()
+    all_packages_dicts = []
+    for package in all_packages:
+        package_dict = {"package_id": package.package_id, "package_type": package.package_type}
+        all_packages_dicts.append(package_dict)
+    return all_packages_dicts
+
 def get_package_detail(package_id):
     """ return package by type """
     return Package.query.get(package_id) 

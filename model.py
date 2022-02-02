@@ -21,7 +21,7 @@ class User(db.Model):
                     nullable = False,  )
     password  = db.Column(db.String(10),
                     nullable = False, )
-    phone  = db.Column(db.Integer,
+    phone  = db.Column(db.String,
                     nullable = False, )
     birthday  = db.Column(db.String,
                 nullable = False, )

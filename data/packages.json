@@ -22,5 +22,17 @@
         "msg_default" : "Enjoy your free time",
         "contents" : "popcorn and face mask",
         "price" : 12.00
+    },
+    {
+        "package_type" : "Gratitude",
+        "msg_default" : "We gratefully appreciate your service and dedication.",
+        "contents" : "candies and cookies",
+        "price" : 8.00
+    },
+    {
+        "package_type" : "Pets",
+        "msg_default" : "Everyday you make me smile!",
+        "contents" : "Pet healthy snack.",
+        "price" : 10.00
     }
 ]

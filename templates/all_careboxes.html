@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>Top Care Packages</h2>
+    <div class="container package-type">
+        
+        <div id="package-list" class="row">
+        {% for package in package_list %} 
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 package-summary mt-3">
+
+                <div class="card text-center bg-light">
+                    <a href="/package/{{ package.package_id }}"> 
+                        <img class="card-img-top img-circle"
+                        style="width: 320px; height: 320px;" 
+                        src="../static/img/box_{{package.package_id}}.jpg">  
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                        <a href="/package/{{ package.package_id }}">
+                            {{ package.package_type }}</a></h5>
+                        <a class="btn btn-primary" href="/package/{{ package.package_id }}">Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <ul id="new-box"></ul>
+        </div>
+    </div>
+    
+
+    <button id="next-packages" >Next Care Packages</button>
+    
+<script src="static/js/2packages_display.js"> </script>
+{% endblock %}

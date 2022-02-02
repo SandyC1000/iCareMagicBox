@@ -1,6 +1,6 @@
 """ Serve.py for iCareMagicBox"""
 from flask import (Flask, render_template, request, flash, session,
-                    redirect)
+                    redirect, jsonify)
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 import os
@@ -9,12 +9,12 @@ TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
 
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
-message = client.messages.create(
-    to="+15105025180",
-    from_="+16502279500",
-    body="*** Hello from iCareMagicBox!! ***")
+# message = client.messages.create(
+#     to="+15105025180",
+#     from_="+16502279500",
+#     body="*** Hello from iCareMagicBox!! ***")
 
-print(message.sid)    
+#   print(message.sid)    
 from model import connect_to_db
 import crud
 from jinja2 import StrictUndefined
@@ -96,10 +96,23 @@ def list_recipients():
 
 @app.route("/packages")
 def list_packages():
-    """Display all care packages"""
+    """Display all care packages v1.0
+     -trying all care boxes v2.0 js
+    
+    """
     package_list = crud.get_all_packages()
 
-    return render_template("all_carepackages.html", package_list=package_list)
+    return render_template("all_careboxes.html", package_list=package_list)
+
+@app.route("/packages/JSON")
+def list_packages_JSON():
+    """Display all
+     -trying all care boxes v2.0 js
+    JSON str 2 packages
+    """
+    # package_list = crud.get_all_packages()
+    package_list = crud.get_packages_dicts()
+    return jsonify(package_list)
 
 
 @app.route("/package/<package_id>")
@@ -159,10 +172,10 @@ def checkout(recipient):
     msg_customized = f'==>> *****  Dear {n_recipient.fname}, {msg_customized} !! \n Best regards,  {user.fname}'
     flash(msg_customized)
     # *** Twilio SMS ***
-    message = client.messages.create(
-    to="+1"+str(n_recipient.phone),
-    from_="+16502279500",  # Twilio phone
-    body="*** Hello from iCareMagicBox!! ***"+msg_customized)
+    # message = client.messages.create(
+    # to="+1"+str(n_recipient.phone),
+    # from_="+16502279500",  # Twilio phone
+    # body="*** Hello from iCareMagicBox!! ***"+msg_customized)
 
     return redirect("/")
 
