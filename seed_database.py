@@ -24,75 +24,21 @@ for n in range (5):
     birthday = fake.date()
     address = fake.address()
     
-    crud.create_user(fname, lname, email, password, phone, birthday, address)    
+    crud.create_user(fname, lname, email, password, phone, birthday, address)
 #    users_in_db.append(db_user)
-    
+#    print (fake_fname, fake_lname)
 
-# print (fake_fname, fake_lname)    
-
-
-# with open("data/users.json") as f:
-#     user_data = json.loads(f.read()) 
-
-#create users
-# users_in_db=[]
-# for user in user_data:
-#     fname, lname, email, password, phone, birthday, address = (
-#         user["fname"],
-#         user["lname"],
-#         user["email"],
-#         user["password"],
-#         user["phone"],
-#         user["birthday"],
-#         user["address"])
-
-#     db_user = crud.create_user(fname, lname, email, password, phone, birthday, address)    
-#     users_in_db.append(db_user)
-
-# with open("data/recipients.json") as f:
-#     recipient_data = json.load(f.read()) 
-
-# recipients_in_db=[]
-# for recipient in recipient_data:
-#     fname, lname, email, phone, birthday, address, user_id =(
-#         user["fname"],
-#         user["lname"],
-#         user["email"], 
-#         user["phone"],
-#         user["birthday"],
-#         user["address"],
-#         user["user_id"])
-
-          
-#     db_recipients = crud.create_user(ffname, lname, email, phone, birthday, address, user_id)    
-#     recipients_in_db.append(db_recipients)
 
 #create packages
 with open("data/packages.json") as f:
-    package_data = json.loads(f.read()) 
+    package_data = json.loads(f.read())
 
 # packages_in_db=[]
 for package in package_data:
     package_type, msg_default, contents, price = (
         package["package_type"],
-        package["msg_default"], 
+        package["msg_default"],
         package["contents"],
         package["price"]
     )
-    crud.create_package(package_type, msg_default, contents, price)  
-  
-#     recipients_in_db.append(db_packages)
-
-# #create sentpackages
-# sentpackages_in_db=[]
-# for sentpackage in sentpackage_data:
-#     sentpackage_id, msg_customized, user_id, recipient_id, package_id  = (
-#         sentpackage["sentpackage_id"],
-#         sentpackage["msg_customized"],
-#         sentpackage["sent_price"],
-#         sentpackage["user_id"], 
-#         sentpackage["recipient_id"], 
-#         sentpackage["package_id"],)
-          
-#     db_sentpackages = crud.create_sentpackage(sentpackage_id, msg_customized, sent_price, user_id, recipient_id, package_id)    
-#     recipients_in_db.append(db_sentpackages)  
+    crud.create_package(package_type, msg_default, contents, price)

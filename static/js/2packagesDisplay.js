@@ -15,3 +15,4 @@ function handleClick() {
 }
 
 button.addEventListener('click', handleClick);
+

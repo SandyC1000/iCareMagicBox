@@ -15,18 +15,17 @@ def create_user(fname, lname, email, password, phone, birthday, address) :
     db.session.commit()
     return user
 
-#1/18/22 - take email, return a user object!
-# SQLAlchemey to query user based on email
-# run crud interactivetly to check on user
-#return user object
-# File "/home/hackbright/src/Hackbright/PROJECT/iCareMagicBox/server.py", line 87, in package_recipient
+
+# SQLAlchemy to query user based on email
 def get_user_by_email(email):
     """ return user info ny email """ 
     return User.query.filter(User.email == email).first()
 
+
 def get_user_by_id(user_id):
     """ return user info by user_id """ 
     return User.query.filter(User.user_id == user_id).first()
+
 
 def get_all_users():
     """ return all users"""
@@ -44,6 +43,7 @@ def create_package(package_type, msg_default, contents, price):
     db.session.commit()
     return package
 
+
 def create_recipient(fname, lname, email, phone, birthday, address, user_id):
     recipient = Recipient(
             fname = fname,
@@ -58,17 +58,21 @@ def create_recipient(fname, lname, email, phone, birthday, address, user_id):
     db.session.commit()
     return recipient
 
+
 def get_recipient(recipient_id):
     """ return recipient info by recipient_id """ 
     return Recipient.query.filter(Recipient.recipient_id == recipient_id).first()    
+
 
 def get_all_recipients():
     """ return all recipients"""
     return Recipient.query.all()    
 
+
 def get_all_packages():
     """ return all packages"""
     return Package.query.all()
+
 
 def get_packages_dicts():
     """ return all(4) packages in dicts for JSON """
@@ -79,9 +83,11 @@ def get_packages_dicts():
         all_packages_dicts.append(package_dict)
     return all_packages_dicts
 
+
 def get_package_detail(package_id):
     """ return package by type """
     return Package.query.get(package_id) 
+
 
 def create_sentpackage(msg_customized, user_id, package_id, recipient_id):
     """ return package by type """
@@ -89,13 +95,11 @@ def create_sentpackage(msg_customized, user_id, package_id, recipient_id):
             msg_customized = msg_customized,
             user_id = user_id,
             package_id = package_id,
-            # add shipping date time
- #           order_date = current_date
+ #          add shipping date time  - for future data model
+ #          order_date = current_date - for future data model
             recipient_id = recipient_id
             )
-    print(f"=>=> Sentpackage details: {sentpackage}")
-    print(f"order date   Shipping date")
+
     db.session.add(sentpackage)
     db.session.commit()
     return sentpackage
-   

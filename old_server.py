@@ -37,16 +37,16 @@ def login_user():
         session['User.user_id'] = user.user_id  # variable user(crud above)
     else:
         flash("User email not found.")
-    # session['user'] = user
+    # session['user'] = user 
     return redirect("/")
 
 
 @app.route("/register/API", methods=["POST"]) # new AJAX
 def register_user_API():
     """Create a new user using JS AJAX."""
-    # print(">>>> we are in route  /register/API")
+    print(">>>> we are in route  /register/API")
     fname = request.json.get("fname")
-    # print(f'fname {fname}')
+    print(f'fname {fname}')
     lname = request.json.get("lname")
     email = request.json.get("email")
     password= request.json.get("password")
@@ -54,8 +54,8 @@ def register_user_API():
     birthday = request.json.get("birthday")
     address = request.json.get("address")
 
-    # print(f"user_name = {fname}")
-    # print(f"user_email = {email}") 
+    print(f"user_name = {fname}")
+    print(f"user_email = {email}") 
 
     user = crud.create_user(fname, lname, email, password, phone, birthday, address)
     # flash("*** Successfully created new User!!")
@@ -73,8 +73,8 @@ def register_user():
     birthday = request.form.get("birthday")
     address = request.form.get("address")
 
-    # print(f"user_name = {fname}")
-    # print(f"user_email = {email}") 
+    print(f"user_name = {fname}")
+    print(f"user_email = {email}") 
 
     user = crud.create_user(fname, lname, email, password, phone, birthday, address)
     flash("*** Successfully created new User!!")
@@ -99,6 +99,7 @@ def list_recipients():
 def list_packages():
     """Display all care packages v1.0
      -trying all care boxes v2.0 js
+    
     """
     package_list = crud.get_all_packages()
 
@@ -127,9 +128,9 @@ def display_packagedetail(package_id):
 @app.route("/recipient", methods=["POST"])
 def package_recipient():
     """Create a new recipient."""
-    # print('************')
-    # print('SESSION ------>', session)
-    # print('************')
+    print('************')
+    print('SESSION ------>', session)
+    print('************')
     
     fname = request.form.get("fname")
     lname = request.form.get("lname")
@@ -142,9 +143,9 @@ def package_recipient():
     session['n_msg_customized'] = request.form.get("msg_customized")
     # print(f'////>>>/recipient : text box {msg_customized}')
     # print the recipients HERE!!
-    # print("==>>RECIPIENT confirm:\n",fname, lname, email, phone, birthday, address,user_id, sentpackage_id)
-    # print(f"type of fname == {type(fname)}")
-    # print(f"type of email == {type(email)}")
+    print("==>>RECIPIENT confirm:\n",fname, lname, email, phone, birthday, address,user_id, sentpackage_id)
+    print(f"type of fname == {type(fname)}")
+    print(f"type of email == {type(email)}")
 
     recipient = crud.create_recipient(fname, lname, email, phone, birthday, address, user_id)
    
@@ -163,15 +164,15 @@ def checkout(recipient):
     msg_customized = session['n_msg_customized']
     # msg_customized = package.msg_default
     # msg_customized = request.form.get("msg_customized")
-    # print(f'/checkoput = = =>>> text box {msg_customized}')
+    print(f'/checkoput = = =>>> text box {msg_customized}')
     # sent_price = package.price
     # add session date time - record for shipping 
-    # print(f"==>>> ROUTE Checkout: {package.msg_default} ")
+    print(f"==>>> ROUTE Checkout: {package.msg_default} ")
     recipient_id = recipient
     n_recipient = crud.get_recipient(recipient_id)
-    # print(f">>> === recipient Sent Package Transaction ===  {recipient_id}")
+    print(f">>> === recipient Sent Package Transaction ===  {recipient_id}")
     sentpackage = crud.create_sentpackage(msg_customized, user_id, package_id, recipient_id)
-    # print(f">>> *** Created Sent Package Transaction ***  {sentpackage}")
+    print(f">>> *** Created Sent Package Transaction ***  {sentpackage}")
     msg_customized = f'==>> *****  Dear {n_recipient.fname}, {msg_customized} !! \n Best regards,  {user.fname}'
     flash(msg_customized)
     # *** Twilio SMS ***

@@ -51,7 +51,7 @@ class Recipient(db.Model):
                       nullable = False,)
     email = db.Column(db.String(30), 
                     nullable = False,)
-    phone  = db.Column(db.Integer,
+    phone  = db.Column(db.String,
                     nullable = False, )
     birthday  = db.Column(db.String,
                 nullable = False, )
@@ -106,7 +106,7 @@ class Sentpackage(db.Model):
                         primary_key = True, )
     msg_customized = db.Column(db.Text,
                         nullable = False,)
-    # sent_price = db.Column(db.Integer,
+    # sent_price = db.Column(db.Integer,  -- future Data Model
     #                     nullable = False,)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'),
                          nullable=False,)
@@ -136,11 +136,10 @@ def connect_to_db(flask_app, db_uri="postgresql:///carepackages", echo=True):
     db.init_app(flask_app)
  
     print("Connected to the db!")
- 
 
 
 if __name__ == "__main__":
-  #  from server import app
+    #  from server import app
 
     # Call connect_to_db(app, echo=False) if your program output gets
     # too annoying; this will tell SQLAlchemy not to print out every
@@ -152,5 +151,4 @@ if __name__ == "__main__":
     app.secret_key = "dev"
     app.jinja_env.undefined = StrictUndefined
 
-    
     connect_to_db(app)

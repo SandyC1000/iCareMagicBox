@@ -26,11 +26,20 @@
                 LastName <input type="text" name="lname">
             </p>
             <p>
-                Military/Veteran <input type="radio" name="y_n" checked>
+                Military/Veteran <input type="radio" id = "military_vet" name="y_n" checked>
                  Yes <input type="radio" name="y_n" checked>
                  No </input>
             </p>
-                
+            <!-- Using Jinja to hide if not Pets package -->
+            {% if package.package_type == 'Pets' %}
+                <p>
+                    Pet type <input type="radio" id = "pet_type" name="pet_type" checked>
+                    Cat <input type="radio" name="pet_type" >
+                    Dog <input type="radio" name="pet_type" >
+                    Bird 
+                </input>
+                </p>
+            {% endif %}
             <p>
                 Email <input type="text" name="email">
             </p>
