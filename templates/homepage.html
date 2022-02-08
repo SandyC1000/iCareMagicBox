@@ -9,7 +9,7 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#">About Us</a>
-      <a class="nav-item nav-link" href=“/packages”>Care Packages</a>
+      <a class="nav-item nav-link" href="/packages">Care Packages</a>
       <a class="nav-item nav-link disabled" href="#">Contact</a>
     </div>
   </div>
@@ -17,9 +17,6 @@
 <!-- ----------------------------------------- -->
 
 <h1> Welcome to iCareMagicBox</h1>
-<!-- <p><img style="width: 720px; height: 200px;" src="/static/img/Cloud1.png"></p> -->
-
-
 
     <!-- <li><a href="/packages">View all packages</a></li> -->
 
@@ -37,20 +34,18 @@
       " alt="Third slide">
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
 
 <!-- <li><a href="/users">View all users</a></li>
 <li><a href="/recipients">View all recipients</a></li> -->
 
-<h2>Login</h2>
+<div class="container">
+
+  <div class="row">
+
+    <div class="col">
+
+      <h2>Login</h2>
 <div id="user-login" >
 <form action="/login" method="POST">
   <p>
@@ -68,35 +63,48 @@
 <button id="show-user-form" >New user registration</button>
 </div>
 
-<div id="create-user" >
-  <h2>Create a User/Register</h2>
-  <form id="user-reg-form" action="/register" method="POST">
-      <p>
-          FirstName <input id="reg-fname" type="text" name="fname">
-      </p>
-      <p>
-          LastName <input id="reg-lname" type="text" name="lname">
-      </p>
-      <p>
-          Email <input id="reg-email" type="text" name="email">
-      </p>
-      <p>
-          Password <input id="reg-password" type="password" name="password">
-      </p>
-      <p>
-          Phone <input id="reg-phone" type="text" name="phone">
-      </p>
-      <p>
-          Birthday <input id="reg-birthday" type="text" name="birthday">
-      </p>
-      <p>
-          Address <input id="reg-address" type="text" name="address">
-      </p>
-    <p>
-      <input type="submit">
-    </p>
-</form>
+    </div>
+
+    <div class="col">
+
+      <div id="create-user" >
+        <h2>Create a User/Register</h2>
+        <form id="user-reg-form" action="/register" method="POST">
+            <p>
+                FirstName <input id="reg-fname" type="text" name="fname">
+            </p>
+            <p>
+                LastName <input id="reg-lname" type="text" name="lname">
+            </p>
+            <p>
+                Email <input id="reg-email" type="text" name="email">
+            </p>
+            <p>
+                Password <input id="reg-password" type="password" name="password">
+            </p>
+            <p>
+                Phone <input id="reg-phone" type="text" name="phone">
+            </p>
+            <p>
+                Birthday <input id="reg-birthday" type="text" name="birthday">
+            </p>
+            <p>
+                Address <input id="reg-address" type="text" name="address">
+            </p>
+          <p>
+            <input type="submit">
+          </p>
+      </form>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
+
+
+
 <script>
   const myCarousel = document.querySelector("#carouselSlidesOnly")
   const carousel = new bootstrap.Carousel(myCarousel)

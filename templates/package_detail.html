@@ -3,19 +3,28 @@
 {% block title%}{{package.package_type}} - Details{% endblock %}
 
 {% block body%}
-<div style="text-align: center;">
-    <h1>{{package.contents}}</h1>
-        <div class="card-body">
-            <h5 class="card-title"><a href="/package/{{ package.package_id }}">{{ package.package_type }}</a></h5>
-            <img class="card-img-top img-circle" 
-                style="width: 250px; height: 250px;" 
-                src="../static/img/box_{{package.package_id}}.jpg"> 
-            <p>{{ package.package_type}}</p>
-            <p>{{ package.msg_default}}</p>
-            <p>{{package.contents}}</p>
-            <!-- <p>{{package.price}}</p>  idea discount for military/veterans-->
-            <div class="price card-text"><p>$ {{package.price}}.00</p></div>
-        </div>
+<div class="container">
+
+    <div class="row">
+
+      <div class="col">
+
+        <div style="text-align: left;">
+            <h1>{{package.contents}}</h1>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/package/{{ package.package_id }}">{{ package.package_type }}</a></h5>
+                    <img class="card-img-top img-circle" 
+                        style="width: 250px; height: 250px;" 
+                        src="../static/img/box_{{package.package_id}}.jpg"> 
+                    <p>{{ package.package_type}}</p>
+                    <p>{{ package.msg_default}}</p>
+                    <p>{{package.contents}}</p>
+                    <!-- <p>{{package.price}}</p>  idea discount for military/veterans-->
+                    <div class="price card-text"><p>$ {{package.price}}.00</p></div>
+                </div>
+      </div>
+
+      <div class="col">
 
         <h2>Sending a Care Package</h2>
         <form action="/recipient" method="POST">
@@ -69,4 +78,13 @@
             </p>
         </form>
 </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
 {% endblock%}
