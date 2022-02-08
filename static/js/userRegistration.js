@@ -1,4 +1,4 @@
-// alert('= ajax.js =  is connected !! <<<<<<<');
+// alert('= ajax js =  is connected !! <<<<<<<');
 "use strict";
 const userButton = document.querySelector("#show-user-form");
 const userForm = "#create-user"

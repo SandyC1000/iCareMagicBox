@@ -1,10 +1,17 @@
 # iCareMagicBox
 
+Project description
+Tech stack
+Features
+Screenshots
+
 Activate environment:
 a. source env/bin/activate
 a. source secrets.sh for Twilio API text msg
 b. pip3 -r requirements.txt
+   run python3 model.py to "Connected to the db!"
 c. run python3 seed_database.py for users and packages
+   split terminal
 d. run python3 server.py
 
 
@@ -24,4 +31,23 @@ carepackages=# \dt
  public | users        | table | hackbright
 (4 rows)
 
-carepackages=# SELECT * FROM packages;
+## Technologies
+**Tech Stack:**
+- Python
+- Twilio API text message
+- Flask
+- SQLAlchemy
+- Jinja2
+- HTML
+- CSS
+- Javascript
+- AJAX
+- JSON
+- Bootstrap
+
+
+iCareMagicBox is an app built on a Flask server with a PostgreSQL database, with SQLAlchemy as the ORM. The front end templating uses Jinja2, the HTML was built using Bootstrap, and the Javascript uses AJAX to interact with the backend.The text message is built using Twilio API.
+
+## For Version 2.0
+- **Data validation:** will use Google Maps to chek if address is correct.
+- **Password hashing:** Passwords will be hashed before being saved to the database
