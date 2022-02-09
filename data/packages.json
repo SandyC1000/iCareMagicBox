@@ -1,38 +1,38 @@
 [
     {
         "package_type" : "Energy",
-        "msg_default" : "Sample message: Hope this boosts you over your challenges!",
-        "contents" : "Contents: healthy chocolates, sparklers and energy bars",
+        "msg_default" : "Hope this boosts you over your challenges!",
+        "contents" : "healthy chocolates, sparklers and energy bars",
         "price" : 10.00
     },
     {
         "package_type" : "Calm",
-        "msg_default" : "Sample message: Be mindful and enter a zen mood!",
-        "contents" : "Contents: chamomile tea, fuzzy socks and lavender oil",
+        "msg_default" : "Be mindful and enter a zen mood!",
+        "contents" : "chamomile tea, fuzzy socks and lavender oil",
         "price" : 9.00
     },
     {
         "package_type" : "Thank You",
-        "msg_default" : "Sample message: I appreciate your care package and thoughtfulness.",
-        "contents" : "Contents: surprise thank you items",
+        "msg_default" : "I appreciate your care package and thoughtfulness.",
+        "contents" : "surprise thank you items",
         "price" : 8.00
     },
     {
         "package_type" : "Relax",
-        "msg_default" : "Sample message: Sit back and take some time to enjoy this!",
-        "contents" : "Contents: popcorn, hot chocolate and eye mask",
+        "msg_default" : "Sit back and take some time to enjoy this!",
+        "contents" : "popcorn, hot chocolate and eye mask",
         "price" : 12.00
     },
     {
         "package_type" : "Gratitude",
-        "msg_default" : "Sample message: We gratefully appreciate your service and dedication.",
-        "contents" : "Contents: assorted candies and deluxe cookies",
+        "msg_default" : "We gratefully appreciate your service and dedication.",
+        "contents" : "assorted candies and deluxe cookies",
         "price" : 8.00
     },
     {
         "package_type" : "Pets",
-        "msg_default" : "Sample message: Your adorable pet always makes me smile!",
-        "contents" : "Contents: Pet healthy organic treats",
+        "msg_default" : "Your adorable pet always makes me smile!",
+        "contents" : "Pet healthy organic treats",
         "price" : 10.00
     }
 ]
