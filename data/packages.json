@@ -1,38 +1,38 @@
 [
     {
         "package_type" : "Energy",
-        "msg_default" : "Bring you strength for your challenges!",
-        "contents" : "chocolate, energy bars",
+        "msg_default" : "Sample message: Hope this boosts you over your challenges!",
+        "contents" : "Contents: healthy chocolates, sparklers and energy bars",
         "price" : 10.00
     },
     {
         "package_type" : "Calm",
-        "msg_default" : "Enter your zen mood :-)",
-        "contents" : "camomile tea, fuzzy socks",
+        "msg_default" : "Sample message: Be mindful and enter a zen mood!",
+        "contents" : "Contents: chamomile tea, fuzzy socks and lavender oil",
         "price" : 9.00
     },
     {
         "package_type" : "Thank You",
-        "msg_default" : "Thanks for thinking of me!!",
-        "contents" : "surprise thank you goodies",
+        "msg_default" : "Sample message: I appreciate your care package and thoughtfulness.",
+        "contents" : "Contents: surprise thank you items",
         "price" : 8.00
     },
     {
         "package_type" : "Relax",
-        "msg_default" : "Enjoy your free time",
-        "contents" : "popcorn and face mask",
+        "msg_default" : "Sample message: Sit back and take some time to enjoy this!",
+        "contents" : "Contents: popcorn, hot chocolate and eye mask",
         "price" : 12.00
     },
     {
         "package_type" : "Gratitude",
-        "msg_default" : "We gratefully appreciate your service and dedication.",
-        "contents" : "candies and cookies",
+        "msg_default" : "Sample message: We gratefully appreciate your service and dedication.",
+        "contents" : "Contents: assorted candies and deluxe cookies",
         "price" : 8.00
     },
     {
         "package_type" : "Pets",
-        "msg_default" : "Everyday you make me smile!",
-        "contents" : "Pet healthy snack.",
+        "msg_default" : "Sample message: Your adorable pet always makes me smile!",
+        "contents" : "Contents: Pet healthy organic treats",
         "price" : 10.00
     }
 ]

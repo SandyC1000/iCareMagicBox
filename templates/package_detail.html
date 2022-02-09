@@ -10,27 +10,32 @@
       <div class="col" >
 
         <div style="text-align: left;">
-            <h1>{{package.contents}}</h1>
+            <p>  </p>
+            <h1>iCareMagicBox
+
+            </h1>
                 <div class="card-body">
                     <h5 class="card-title"><a href="/package/{{ package.package_id }}">{{ package.package_type }}</a></h5>
                     <img class="card-img-top img-circle" 
-                        style="width: 250px; height: 250px;" 
+                        style="width: 320px; height: 320px;" 
                         src="../static/img/box_{{package.package_id}}.jpg"> 
-                    <p>{{ package.package_type}}</p>
-                    <p>{{ package.msg_default}}</p>
+                    <!-- <p>{{ package.package_type}}</p> -->
+                    <p>  </p>
+                    <p><b>{{ package.msg_default}}</b></p>
                     <p>{{package.contents}}</p>
                     <!-- <p>{{package.price}}</p>  idea discount for military/veterans-->
                     <div class="price card-text"><p>$ {{package.price}}.00</p></div>
                 </div>
         </div>
     </div>
-    
-      <div class="col">
 
-        <h2>Sending a Care Package</h2>
+    <div class="col">
+        <p>  </p>
+        <h2>Send a Special Care Package! </h2>
         <form action="/recipient" method="POST">
-            <p>FirstName <input type="text" name="fname"></p>
-            <p>LastName <input type="text" name="lname"></p>
+            <p>  </p>
+            <p>First Name &ensp; <input type="text" name="fname"></p>
+            <p>Last Name &ensp; <input type="text" name="lname"></p>
             <p>
                 Military/Veteran <input type="radio" id = "military_vet" name="y_n" checked>
                  Yes <input type="radio" name="y_n" checked>
@@ -46,42 +51,25 @@
             </input>
             </p>
             {% endif %}
-            <p>
-                Email <input type="text" name="email">
-            </p>
-            <p>
-                Phone <input type="text" name="phone">
-            </p>
-            <p>
-                Birthday <input type="text" name="birthday">
-            </p>
-            <p>
-                Address <input type="text" name="address">
-            </p>
+            <p>Email &emsp;&emsp;&ensp; <input type="text" name="email"></p>
+            <p>Phone &emsp;&emsp; <input type="text" name="phone"></p>
+            <p>Birthday &emsp; <input type="text" name="birthday"></p>
+            <p>Address &emsp; <input type="text" name="address"></p>
             <!-- # create package_id to be included in form using Jinja
             # set value package = package.package_id -->
             <!-- <p>
-                Package  {{package.package_id}}     <!--Jinja -->
-                <!-- sent_price {{package.price}}
-                msg_customized {{package.msg_default}} -->
-            </p> 
+                Package  {{package.package_id}}    => Jinja 
+                sent_price {{package.price}}
+                msg_customized {{package.msg_default}} 
+                </p>  -->
             <p>
-                Customize your message:<textarea id="msg_customized" name="msg_customized" spellcheck="true"
-                rows="5" cols="30"
-                minlength="10" maxlength="200">{{package.msg_default}}</textarea>
+                Customize: &ensp;<textarea id="msg_customized" name="msg_customized" spellcheck="true"
+                rows="5" cols="50"
+                minlength="10" maxlength="250">{{package.msg_default}}</textarea>
             </p>
-            <p>
-            <input type="submit" value="Send your Gift">
-            </p>
+            <p><input type="submit" value="Send your Gift"></p>
         </form>
-</div>
-
-      
-
     </div>
-
+    </div>
   </div>
-
-
-
 {% endblock%}

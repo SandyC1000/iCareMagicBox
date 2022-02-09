@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <h2>Top Care Packages</h2>
+    
     <div class="container package-type">
-        
+        <p>  </p>
+        <h2>&emsp;&emsp;  iCareMagicBox - Product Catalog</h2>
         <div id="package-list" class="row">
         {% for package in package_list %} 
 
@@ -27,9 +28,5 @@
         <ul id="new-box"></ul>
         </div>
     </div>
-    
-
     <!-- <button id="next-packages" >Next Care Packages</button> Future Feature -->
-    
-<script src="static/js/2packages_display.js"> </script>
 {% endblock %}
