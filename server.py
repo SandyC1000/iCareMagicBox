@@ -182,7 +182,7 @@ def checkout(recipient):
     # from_="+16502279500",  # Twilio phone
     # body="*** Hello from iCareMagicBox!! ***"+msg_customized)
 
-    return redirect("/")
+    return redirect("/packages")
 
 # 1 - needs to activate ngrok for Twilio to send response via mobile chat - tested ok
 # @app.route("/sms", methods=['GET', 'POST'])
