@@ -12,7 +12,6 @@ userButton.addEventListener('click', ()=>{
 const userRegForm = document.querySelector("#user-reg-form");
 userRegForm.addEventListener('submit',(evt) => {
     evt.preventDefault();
-    alert("*** Entering userRegForm ")
 
     const formInputs = {
         fname : document.getElementById('reg-fname').value,
@@ -23,7 +22,7 @@ userRegForm.addEventListener('submit',(evt) => {
         birthday : document.getElementById('reg-birthday').value,
         address : document.getElementById('reg-address').value
                         };
-    fetch('/register/API',{
+    fetch('/register/api',{
         method: 'POST',
         body: JSON.stringify(formInputs),
         headers: {

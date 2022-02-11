@@ -4,14 +4,15 @@ from flask import (Flask, render_template, request, flash, session,
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 import os
+from model import connect_to_db
+import crud
+from jinja2 import StrictUndefined
 TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
 TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
 
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
  
-from model import connect_to_db
-import crud
-from jinja2 import StrictUndefined
+
 
 app = Flask(__name__)   #instance of Class Flask
 app.secret_key = "dev"
@@ -33,7 +34,7 @@ def login_user():
    # query user by email, check if match email in table users and if password match.
     if user:
         flash(f"*** Hello {user.fname}!  Welcome back for more kindness.")
-        #session['User.user_id'] = 1 #  testing
+        
         session['User.user_id'] = user.user_id  # variable user(crud above)
     else:
         flash("User email not found.")
@@ -41,10 +42,10 @@ def login_user():
     return redirect("/")
 
 
-@app.route("/register/API", methods=["POST"]) # new AJAX
-def register_user_API():
+@app.route("/register/api", methods=["POST"]) # new AJAX
+def register_user_api():
     """Create a new user using JS AJAX."""
-    # print(">>>> we are in route  /register/API")
+    # print(">>>> we are in route  /register/api")
     fname = request.json.get("fname")
     # print(f'fname {fname}')
     lname = request.json.get("lname")
@@ -174,7 +175,8 @@ def checkout(recipient):
     # print(f">>> *** Created Sent Package Transaction ***  {sentpackage}")
     msg_customized = f'==>> *****  Dear {n_recipient.fname}, {msg_customized} !! \n Best regards,  {user.fname}'
     flash(msg_customized)
-    # *** Twilio SMS ***
+    
+    # *** Twilio SMS - trial account - need to register Verified Caller IDs ***
     # message = client.messages.create(
     # to="+1"+str(n_recipient.phone),
     # from_="+16502279500",  # Twilio phone

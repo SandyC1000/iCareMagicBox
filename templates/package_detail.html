@@ -21,8 +21,8 @@
                         src="../static/img/box_{{package.package_id}}.jpg"> 
                     <!-- <p>{{ package.package_type}}</p> -->
                     <p>  </p>
-                    <p><b>{{ package.msg_default}}</b></p>
-                    <p>{{package.contents}}</p>
+                    <p><b>Default Message: {{ package.msg_default}}</b></p>
+                    <p>Contents:  {{package.contents}}</p>
                     <!-- <p>{{package.price}}</p>  idea discount for military/veterans-->
                     <div class="price card-text"><p>$ {{package.price}}.00</p></div>
                 </div>
@@ -62,8 +62,8 @@
                 sent_price {{package.price}}
                 msg_customized {{package.msg_default}} 
                 </p>  -->
-            <p>
-                Customize: &ensp;<textarea id="msg_customized" name="msg_customized" spellcheck="true"
+            <p> 
+                <span style="vertical-align: text-top;">Customize: &ensp;</span><textarea id="msg_customized" name="msg_customized" spellcheck="true"
                 rows="5" cols="50"
                 minlength="10" maxlength="250">{{package.msg_default}}</textarea>
             </p>
