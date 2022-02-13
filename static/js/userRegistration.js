@@ -1,5 +1,6 @@
 // alert('= ajax js =  is connected !! <<<<<<<');
 "use strict";
+// setTimeout(function() {$('.alert-box').remove();}, 20000);
 const userButton = document.querySelector("#show-user-form");
 const userForm = "#create-user"
 const user_form = document.getElementById("create-user");
