@@ -6,6 +6,7 @@ db = SQLAlchemy()
 
 
 # Classes in TABLES
+# 
 class User(db.Model):
     """creating a user table """
     __tablename__ = "users"
